@@ -1,10 +1,17 @@
-const express= require('express')
-const mongoose=require('mongoose')
-const dotenv=require('dotenv')
+import express from "express"
+import mongoose from "mongoose";
+import dotenv from "dotenv"
 
 const app = express();
 
-// Middleware
+// import Routes
+import postsRoutes from "./Routes/posts.js"
+import userRouter from "./Routes/user.js"
+
+
+//usage of routes
+app.use('/posts',postsRoutes)
+app.use('/user',userRouter)
 
 //routes
 
@@ -12,9 +19,7 @@ app.get('/',(req,res)=>{
     res.send('server created')
 })
 
-app.get('/post',(req,res)=>{
-    res.send('we are on post')
-})
+
 
 dotenv.config()
 
