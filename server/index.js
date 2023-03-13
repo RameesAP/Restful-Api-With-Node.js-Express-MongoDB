@@ -1,8 +1,11 @@
 import express from "express"
 import mongoose from "mongoose";
 import dotenv from "dotenv"
+import bodyParser from "body-parser";
+
 
 const app = express();
+app.use(bodyParser.json())
 
 // import Routes
 import postsRoutes from "./Routes/posts.js"
