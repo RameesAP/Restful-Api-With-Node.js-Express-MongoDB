@@ -2,10 +2,14 @@ import express from "express"
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
+import morgan from "morgan";
+import cors from "cors"
 
 
 const app = express();
 app.use(bodyParser.json())
+app.use(morgan('dev'))
+app.use(cors())
 
 // import Routes
 import postsRoutes from "./Routes/posts.js"

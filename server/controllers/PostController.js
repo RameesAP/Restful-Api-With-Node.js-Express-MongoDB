@@ -38,14 +38,28 @@ export const getSpecifc = async (req, res) => {
 
 //delete post  
 export const deletePost = async (req, res) => {
-    const id=req.params.id
+    const id = req.params.id
     try {
         // const removePost = PostModel.deleteOne(id)
         // res.status(200).json(removePost,"deleted")
-        const post=await PostModel.findById(id)
+        const post = await PostModel.findById(id)
         await post.deleteOne();
         res.status(200).json("post Deleted successfully")
     } catch (error) {
         res.status(500).json(error)
     }
 }
+
+//update a post
+
+export const updatePost = async (req, res) => {
+    const id = req.params.id
+    const update = req.body
+    try {
+        const updatePostt = await PostModel.findByIdAndUpdate(id, update, { new: true })
+        res.status(200).json(updatePostt)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
